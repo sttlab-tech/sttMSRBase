@@ -1,0 +1,20 @@
+version: 1
+
+# Command line argument that overrides each key is given in parentheses.
+switches:
+  # Relative path of the target installation of IS. (-d)
+  target_installation:
+
+  # Scan branches for versions. (-sb)
+  scan_branches: true
+
+  # Delete contents related to source code management from target directory on a successful install or update. (-kr)
+  cleanup: true
+
+# Define your remote registries here (one or multiple, wpm or git)
+# and reference them using -r from the command line interface.
+repositories:
+  default:
+    type: wpr
+    location: https://packages.webmethods.io
+    working_dir: .

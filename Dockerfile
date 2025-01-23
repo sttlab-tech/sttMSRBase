@@ -7,6 +7,7 @@ ADD --chown=1724:0 wpm /opt/softwareag/wpm
 RUN chmod u+x /opt/softwareag/wpm/bin/wpm.sh
 ENV PATH=/opt/softwareag/wpm/bin:$PATH
 
+RUN /opt/softwareag/wpm/bin/wpm.sh install -ws https://packages.webmethods.io -wr supported -j $WPM_TOKEN -d /opt/softwareag/IntegrationServer WmE2EMIntegrationAgent:v10.15.0.10
 RUN /opt/softwareag/wpm/bin/wpm.sh install -ws https://packages.webmethods.io -wr licensed -j $WPM_TOKEN -d /opt/softwareag/IntegrationServer WmJDBCAdapter:v10.3.4.20
 RUN curl -o /opt/softwareag/IntegrationServer/packages/WmJDBCAdapter/code/jars/postgresql-42.7.4.jar https://jdbc.postgresql.org/download/postgresql-42.7.4.jar
 RUN /opt/softwareag/wpm/bin/wpm.sh install -u staillansag -p $GIT_TOKEN -r https://github.com/staillansag -d /opt/softwareag/IntegrationServer qdtFramework

@@ -20,6 +20,11 @@ ENV JAVA_HOME=/opt/softwareag/jvm/jvm/ \
     JDK_HOME=/opt/softwareag/jvm/jvm/ \
     PATH=$PATH:/opt/softwareag/wpm/bin
 
+ENV JAVA_UHM_OPTS="-javaagent:./packages/WmE2EMIntegrationAgent/resources/agent/uha-apm-agent.jar=logging.dir=./logs/ -Xbootclasspath/a:./packages/WmE2EMIntegrationAgent/resources/agent/uha-apm-agent.jar"
+ENV JAVA_CUSTOM_OPTS="${JAVA_CUSTOM_OPTS} ${JAVA_UHM_OPTS}"
+ENV JAVA_UHM_LOG_OPTS="-Dlogback.configurationFile=./packages/WmE2EMIntegrationAgent/resources/agent/config/e2ecustomlogback.xml"
+ENV JAVA_CUSTOM_OPTS="${JAVA_CUSTOM_OPTS} ${JAVA_UHM_LOG_OPTS}"	
+
 RUN yum -y update ;\
     yum -y install \
         procps \
